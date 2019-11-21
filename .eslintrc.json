@@ -15,6 +15,7 @@
         ],
         "react/jsx-indent" : ["error", 4],
         "react/jsx-one-expression-per-line": false,
-        "comma-dangle" : 0
+        "comma-dangle" : 0,
+        "one-var" : 0
     }
 }

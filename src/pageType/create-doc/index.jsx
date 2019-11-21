@@ -2,12 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 // eslint-disable-next-line no-unused-vars
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import { DocCreator, DefaultDocMessage } from '../components/doc-creator';
+import { DocCreator, DefaultDocMessage } from '../../components/doc-creator';
 
-export default function CreateDoc({ match }) {
+export default function CreateDoc(props) {
+    const routerProps = props || {},
+        match = routerProps.match || {};
+
     return (
         <div>
-            <h2>Documentos disponibles</h2>
+            <h2>Documentos Disponibles</h2>
             <ul>
                 <li>
                     <Link to={`${match.url}/contrato`}>Contrato #1</Link>

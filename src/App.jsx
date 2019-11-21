@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import React from 'react';
 import Nav from './components/nav';
-import CreateDoc from './pageType/CreateDoc';
+import CreateDoc from './pageType/create-doc';
 
 /* eslint-disable no-use-before-define */
 function App() {
