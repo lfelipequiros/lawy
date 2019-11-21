@@ -1,4 +1,24 @@
 import React from 'react';
-export default function docCreator(){
-    return (<span>This is the doc creator</span>);
+import PropTypes from 'prop-types';
+
+export function DocCreator({ match }) {
+    return (<h3>Aquí vamos a crear tu: {match.params.id}</h3>);
+}
+
+export function DefaultDocMessage() {
+    return (<h3>Por favor seleccione un documento.</h3>);
+}
+
+DocCreator.propTypes = {
+    match: PropTypes.shape({
+        params: PropTypes.shape({
+            id: PropTypes.string.isRequired
+        })
+    })
+};
+
+DocCreator.defaultProps = {
+    match: {
+        params: {}
+    }
 };

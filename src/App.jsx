@@ -1,50 +1,28 @@
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import React from 'react';
 import Nav from './components/nav';
+import CreateDoc from './pageType/CreateDoc';
 
+/* eslint-disable no-use-before-define */
 function App() {
     return (
         <Router>
-            <div>
-                <Nav />
-                    <Route exact path="/" component={Home} />
-                    <Route path="/about" component={About} />
-                    <Route path="/crear-documento" component={CreatDoc} />
-            </div>
+            <Nav />
+            <Route exact path="/" component={Home} />
+            <Route path="/about" component={About} />
+            <Route path="/crear-documento" component={CreateDoc} />
         </Router>
     );
 }
 
-function Home({ match }) {
+// TODO move this to it's own component and actually put something in here
+function Home() {
     return <h2>Home</h2>;
 }
 
+// TODO move this to it's own component and actually put something in here
 function About() {
     return <h2>About</h2>;
-}
-
-function Document({ match }) {
-    return <h3>Aquí vamos a crear tu: {match.params.id}</h3>;
-}
-
-function CreatDoc({ match }) {
-    return (
-        <div>
-            <h2>Documentos disponibles</h2>
-
-            <ul>
-                <li>
-                    <Link to={`${match.url}/contrato`}>Contrato #1</Link>
-                </li>
-                <li>
-                    <Link to={`${match.url}/tutela`}>Tutela #2</Link>
-                </li>
-            </ul>
-
-            <Route path={`${match.path}/:id`} component={Document} />
-            <Route exact path={match.path} render={() => <h3>Por favor seleccione un documento.</h3>} />
-        </div>
-    );
 }
 
 export default App;
