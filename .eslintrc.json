@@ -2,8 +2,8 @@
     "extends": [
         "airbnb"
     ],
-    "indent": ["error", 4],
     "rules": {
+        "indent": ["error", 4],
         "react/jsx-filename-extension": [
             1,
             {
@@ -13,13 +13,9 @@
                 ]
             }
         ],
-        "prettier/prettier": [
-            "error",
-            {
-                "trailingComma": "es5",
-                "singleQuote": true,
-                "printWidth": 100
-            }
-        ]
+        "react/jsx-indent" : ["error", 4],
+        "react/jsx-one-expression-per-line": false,
+        "comma-dangle" : 0,
+        "one-var" : 0
     }
 }
