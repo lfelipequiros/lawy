@@ -3,8 +3,12 @@ import PdfMake from 'pdfmake/build/pdfmake';
 const pdfDefinitions = {
     default: {
         content: 'Content',
-        header: 'Header',
-        footer: 'Footer'
+        header:{
+            text: 'Header',
+            margin: 10
+        } ,
+        footer: 'Footer',
+        pageMargins: [40, 140, 40, 60]
     },
     sOne: {
         content: 'Content',
@@ -14,8 +18,12 @@ const pdfDefinitions = {
     }
 };
 
-function createPdf(pdfType = 'default') {
-    return PdfMake.createPdf(pdfDefinitions[pdfType]);
+export const getDefinition = function(definitionID){
+    return pdfDefinitions[definitionID];
 }
 
-export default createPdf;
+export const createPdfGenerator = PdfMake.createPdf;
+
+export default function createPdf(pdfType = 'default') {
+    return PdfMake.createPdf(pdfDefinitions[pdfType]);
+};

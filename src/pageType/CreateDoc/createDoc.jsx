@@ -1,19 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import Button from '../../components/Button';
-// import documentTypes from './config';
-import createPdf from './pdf';
+import Wizard from '../../components/Wizard'
+import documentDefaults from '../../utils/defaults';
+import { getDefinition, createPdfGenerator } from './pdf';
 import './createDoc.css';
 
 const CreateDoc = () => {
     const [docInitialized, setDocInitialization] = useState(false);
+    const initDefinition = getDefinition("default");
 
-    function openPdf(_createPdf) {
-        _createPdf().open();
-    }
+    initDefinition.header.text = documentDefaults.defaultHeader;
 
-    function downloadPdf(_createPdf) {
-        _createPdf().download();
-    }
+    const openPdf = useCallback(
+        () => createPdfGenerator(initDefinition).open(),
+        [initDefinition]
+    );
+
+    const downloadPdf = useCallback(
+        () => createPdfGenerator(initDefinition).download(),
+        [initDefinition]
+    );
 
     function handleDocInitialization(event) {
         const button = event.currentTarget;
@@ -73,17 +79,18 @@ const CreateDoc = () => {
                             Cancelar Documento
                         </Button>
                         <Button
-                            onClick={() => openPdf.call(this, createPdf)}
-                            variant="contained"
-                            color="default">
+                            onClick={openPdf}
+                        >
                             Ver archivo
                         </Button>
                         <Button
-                            onClick={() => downloadPdf.call(this, createPdf)}
-                            variant="contained"
-                            color="default">
+                            onClick={downloadPdf}
+                        >
                             Descargar pdf
                         </Button>
+                        <Wizard>
+
+                        </Wizard>
                     </React.Fragment>
                 ) : (
                     <Button
