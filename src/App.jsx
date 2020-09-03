@@ -1,17 +1,22 @@
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import React from 'react';
 import Nav from './components/nav';
-import CreateDoc from './pageType/create-doc';
+import Auth from './components/auth';
+import CreateDoc from './pageType/CreateDoc';
 
 /* eslint-disable no-use-before-define */
 function App() {
     return (
-        <Router>
-            <Nav />
-            <Route exact path="/" component={Home} />
-            <Route path="/about" component={About} />
-            <Route path="/crear-documento" component={CreateDoc} />
-        </Router>
+        <div>
+            <Auth />
+
+            <Router>
+                <Nav />
+                <Route exact path="/" component={Home} />
+                <Route path="/about" component={About} />
+                <Route path="/crear-documento" component={CreateDoc} />
+            </Router>
+        </div>
     );
 }
 
