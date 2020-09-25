@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Wizard = function(){
+const Wizard = function(props){
     return (<div>  
-        this is the wizard
+        {props.children}
     </div>)
 };
 
